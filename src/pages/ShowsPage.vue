@@ -2,9 +2,10 @@
   <div>
     <div v-if="isFetchingShows">loading</div>
     <input
-      v-model="search"
+      :value="podcastSearch"
+      @input="this.setPodcastSearch"
       placeholder="Search for a pod"
-      class="border p-2 rounded-md outline-none w-full"
+      class="border p-2 rounded-md outline-none w-full h-12"
     />
     <div class="flex flex-wrap">
       <ShowCard v-for="show in shows" :key="show.id" :show="show"></ShowCard>
@@ -15,29 +16,37 @@
 <script lang="ts">
 import _ from "lodash";
 import client from "../services/client";
-import ShowCard from '../components/ShowCard.vue';
+import ShowCard from "../components/ShowCard.vue";
+import { computed, defineComponent } from "vue";
+import { useStore } from "../main";
+import { mapMutations, mapState } from "vuex";
 
-export default {
+export default defineComponent({
   name: "ShowsPage",
   components: {
-    ShowCard
+    ShowCard,
   },
+
   data() {
     return {
       token: null,
       search: "",
       isFetchingShows: false,
-      shows: [],
     };
   },
   watch: {
-    search: _.debounce(function (this: any, search: string) {
+    podcastSearch: _.debounce(function (this: any, search: string) {
       if (search) {
         this.fetchShows(search);
       }
     }, 500),
   },
+  computed: mapState({
+    podcastSearch: (state: any) => state.podcastSearch,
+    shows: (state: any) => state.shows,
+  }),
   methods: {
+    ...mapMutations(["setPodcastSearch", "setShows"]),
     async fetchShows(search: string) {
       this.isFetchingShows = true;
 
@@ -49,16 +58,15 @@ export default {
           safe_mode: 0,
         })
         .then((response: any) => {
-          console.log(response);
           this.isFetchingShows = false;
-          this.shows = response.data.podcasts;
+          this.setShows(response.data.podcasts);
         })
         .catch((error: any) => {
           console.log(error);
         });
     },
   },
-};
+});
 </script>
 
 <style scoped></style>

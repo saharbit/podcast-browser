@@ -1,18 +1,27 @@
 <template>
+  <div v-if="isFetchingEpisodes">loading</div>
   <div class="flex flex-wrap">
-    <EpisodeCard v-for="episode in episodes" :key="episode.id" :episode="episode"></EpisodeCard>
+    <EpisodeCard
+      v-for="episode in episodes"
+      :key="episode.id"
+      :episode="episode"
+    ></EpisodeCard>
   </div>
 </template>
 
 <script lang="ts">
 import client from "../services/client";
-import EpisodeCard from '../components/EpisodeCard.vue';
+import EpisodeCard from "../components/EpisodeCard.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "ShowPage",
   components: { EpisodeCard },
   data() {
-    return { episodes: [], isFetchingEpisodes: false };
+    return {
+      episodes: [],
+      isFetchingEpisodes: false,
+    };
   },
   methods: {
     async fetchEpisodes() {
@@ -35,7 +44,7 @@ export default {
   mounted() {
     this.fetchEpisodes();
   },
-};
+});
 </script>
 
 <style scoped></style>

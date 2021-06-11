@@ -4,19 +4,19 @@
     class="
       flex flex-row
       border
-      p-2
+      border-beige-dark
       rounded-md
       hover:border-black
       cursor-pointer
       mr-2
       my-2
       transition-all
+      items-center
     "
   >
-    <img v-bind:src="show.thumbnail" class="w-24 h-24" />
-    <div class="flex flex-col ml-2">
+    <img v-bind:src="show.thumbnail" class="w-12 h-12 rounded-l" />
+    <div class="flex flex-col p-2">
       <div>{{ show.title_original }}</div>
-      <!-- <div class="w-24 truncate">{{ show.description }}</div> -->
     </div>
   </div>
   </router-link>
