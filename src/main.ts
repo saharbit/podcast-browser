@@ -4,12 +4,13 @@ import "./index.css";
 import App from "./App.vue";
 import ShowPage from "./pages/ShowPage.vue";
 import EpisodePage from "./pages/EpisodePage.vue";
-import ShowsPage from "./pages/ShowsPage.vue";
+import ShowSearchPage from "./pages/ShowSearchPage.vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 
 export interface State {
   podcastSearch: string;
   shows: [];
+  liveEpisode: object | null;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -23,6 +24,7 @@ const store = createStore<State>({
     return {
       podcastSearch: "",
       shows: [],
+      liveEpisode: null
     };
   },
   mutations: {
@@ -32,11 +34,14 @@ const store = createStore<State>({
     setShows(state, shows) {
       state.shows = shows;
     },
+    setLiveEpisode(state, episode) {
+      state.liveEpisode = episode;
+    }
   },
 });
 
 const routes = [
-  { path: "/", component: ShowsPage },
+  { path: "/", component: ShowSearchPage },
   { path: "/podcast/:id", component: ShowPage },
   { path: "/episode/:id", component: EpisodePage },
 ];

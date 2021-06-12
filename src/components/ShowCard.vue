@@ -14,7 +14,7 @@
       items-center
     "
   >
-    <img v-bind:src="show.thumbnail" class="w-12 h-12 rounded-l" />
+    <img v-bind:src="show.thumbnail" class="w-16 h-16 rounded-l" />
     <div class="flex flex-col p-2">
       <div>{{ show.title_original }}</div>
     </div>

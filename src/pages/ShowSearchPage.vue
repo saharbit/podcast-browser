@@ -22,7 +22,7 @@ import { useStore } from "../main";
 import { mapMutations, mapState } from "vuex";
 
 export default defineComponent({
-  name: "ShowsPage",
+  name: "ShowSearchPage",
   components: {
     ShowCard,
   },
