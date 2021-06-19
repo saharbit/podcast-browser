@@ -7,8 +7,8 @@ module.exports = {
     colors: {
       ...colors,
       beige: "#f5eddd",
-      'beige-dark': "#ccc5b8",
-      'beige-darker': "#8c877e",
+      "beige-dark": "#ccc5b8",
+      "beige-darker": "#8c877e",
     },
     extend: {},
   },

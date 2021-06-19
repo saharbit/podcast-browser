@@ -17,8 +17,7 @@
 import _ from "lodash";
 import client from "../services/client";
 import ShowCard from "../components/ShowCard.vue";
-import { computed, defineComponent } from "vue";
-import { useStore } from "../main";
+import { defineComponent } from "vue";
 import { mapMutations, mapState } from "vuex";
 
 export default defineComponent({

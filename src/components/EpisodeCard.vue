@@ -32,7 +32,7 @@ export default defineComponent({
   props: ["episode"],
   methods: {
     ...mapMutations(["setLiveEpisode"]),
-  }
+  },
 });
 </script>
 

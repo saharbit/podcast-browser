@@ -18,7 +18,7 @@ export const store = createStore<State>({
     return {
       podcastSearch: "",
       shows: [],
-      liveEpisode: null
+      liveEpisode: null,
     };
   },
   mutations: {
@@ -30,6 +30,6 @@ export const store = createStore<State>({
     },
     setLiveEpisode(state, episode) {
       state.liveEpisode = episode;
-    }
+    },
   },
 });
