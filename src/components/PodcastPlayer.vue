@@ -15,10 +15,7 @@ import { mapState } from "vuex";
 export default {
   name: "PodcastPlayer",
   computed: mapState({
-    episode: (state) => {
-      console.log(state);
-      return state.liveEpisode;
-    },
+    episode: (state) => state.liveEpisode,
   }),
 };
 </script>

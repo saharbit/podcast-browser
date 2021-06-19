@@ -32,7 +32,6 @@ export default defineComponent({
           id,
         })
         .then((response: any) => {
-          console.log(response);
           this.isFetchingEpisodes = false;
           this.episodes = response.data.episodes;
         })
